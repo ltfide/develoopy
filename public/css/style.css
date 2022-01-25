@@ -1,0 +1,261 @@
+:root {
+    --main-color: #219150;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Fira Code";
+    text-decoration: none;
+}
+
+html {
+    font-size: 80%;
+    scroll-behavior: smooth;
+}
+/* 
+body {
+} */
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1rem;
+    background-color: transparent;
+    border: 2px solid #333;
+    color: #333;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+header {
+    margin: auto;
+    padding: 1rem 15%;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    z-index: 999;
+}
+
+header .header-container {
+    max-width: 1280px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-container .logo span {
+    color: var(--main-color);
+}
+
+.header-container .menu {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.header-container .menu a {
+    text-transform: capitalize;
+    color: #444;
+    font-size: 1rem;
+}
+
+section {
+    padding: 1rem 15%;
+}
+
+/* navbar start */
+
+#navbar .navbar-container {
+    background: url("/../img/home-bg-1.jpg") no-repeat;
+    text-align: center;
+    padding-top: 10rem;
+    height: 30rem;
+    object-fit: cover;
+    background-position: center;
+}
+
+#navbar .navbar-container h2 {
+    color: #219150;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+#navbar .navbar-container a {
+    margin-top: 1rem;
+}
+
+/* Posts Start */
+
+#posts .container-posts {
+    padding: 3.5rem 0;
+    max-width: 1280px;
+    margin: auto;
+    display: flex;
+    gap: 1rem;
+}
+
+#posts .container-posts .layout-posts {
+    width: 75%;
+}
+
+#posts .container-posts .layout-posts .heading {
+    font-size: 2rem;
+    color: var(--main-color);
+    text-transform: uppercase;
+}
+
+#posts .container-posts .layout-posts .box-post {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    border: 2px solid #333;
+    padding: 0.5rem;
+    position: relative;
+}
+
+#posts .container-posts .layout-posts .box-post .content {
+    padding: 0.5rem 0;
+}
+
+#posts .container-posts .layout-posts .box-post .content h3 a {
+    color: #333;
+    font-size: 1.3rem;
+}
+
+#posts .container-posts .layout-posts .box-post .content p {
+    margin-top: 0.2rem;
+    font-size: 1rem;
+    color: #777;
+}
+
+#posts .container-posts .layout-posts .box-post .category {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.4rem;
+    background-color: #333;
+    color: #fff;
+}
+
+#posts .container-posts .box-post img {
+    width: 10rem;
+    height: 7rem;
+    background-position: center;
+    background-size: cover;
+}
+
+#posts .container-posts .layout-posts .pagination-posts {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+#posts .container-posts .layout-posts .pagination-posts nav ul li {
+    display: inline;
+}
+
+#posts .container-posts .layout-posts .pagination-posts nav ul li a {
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--main-color);
+}
+
+#posts .container-posts .layout-posts .pagination-posts nav ul li.active {
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #333;
+}
+
+#posts .container-posts .category-posts {
+    width: 25%;
+    text-align: center;
+}
+
+#posts .container-posts .category-posts .text {
+    text-align: center;
+}
+
+#posts .container-posts .category-posts .supp {
+    display: inline-block;
+    margin-top: 1rem;
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--main-color);
+    color: #fff;
+}
+
+#posts .container-posts .category-posts .supp:hover {
+    background-color: #1db95e;
+}
+
+/* footer start */
+
+footer {
+    background-color: var(--main-color);
+    padding: 1rem 15%;
+}
+
+footer .container-footer {
+    max-width: 1280px;
+    margin: auto;
+}
+
+footer .container-footer .newsletter {
+    text-align: center;
+    margin: 1rem 0;
+    color: #fff;
+}
+
+footer .container-footer .newsletter h2,
+h3 {
+    font-weight: 500;
+}
+
+footer .container-footer .newsletter input {
+    padding: 0.7rem 1rem;
+    outline: none;
+    border: 2px solid white;
+    margin: 1rem 0;
+}
+
+footer .container-footer .newsletter button {
+    padding: 0.7rem 1rem;
+    cursor: pointer;
+}
+
+footer .container-footer .newsletter a {
+    display: block;
+    color: #fff;
+    margin-top: 3rem;
+}
+
+footer .container-footer .newsletter a span {
+    color: #222;
+}
+
+@media (max-width: 768px) {
+    header,
+    section {
+        padding: 1rem 9%;
+    }
+
+    #posts .container-posts .layout-posts {
+        width: 100%;
+    }
+
+    #posts .container-posts .category-posts {
+        display: none;
+    }
+
+    #posts .container-posts .layout-posts {
+        width: 100%;
+    }
+}

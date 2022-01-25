@@ -1,0 +1,45 @@
+/*  form create start  */
+.form-create {
+    margin-top: 7rem;
+    margin-left: 15rem;
+}
+
+.form-create .container-create {
+    background: #fff;
+    padding: 2rem;
+    width: 70%;
+    margin: auto;
+}
+
+.form-create .container-create form input {
+    width: 100%;
+    display: block;
+    margin: auto;
+    margin-top: 1rem;
+    padding: 0.8rem;
+    border: 1px solid #333;
+}
+
+.form-create .container-create form #category_id {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.5rem;
+}
+
+.form-create .container-create form .create {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+.form-create .container-create form img {
+    width: 12rem;
+    margin-top: 1rem;
+}
+
+#trix-toolbar-1 {
+    margin-top: 1rem;
+}
+
+/* form create end */
