@@ -32,8 +32,16 @@ header .container .logo span {
 
 header .container .menu a {
     color: #4b545c;
-    margin-right: 1rem;
+    margin-left: 1rem;
     text-decoration: none;
+}
+
+header .container .menu form {
+    display: inline;
+}
+
+header .container .menu a:hover {
+    color: #219150;
 }
 
 /* navbar */
@@ -56,6 +64,10 @@ section .logo {
     text-align: center;
 }
 
+section a {
+    text-decoration: none;
+}
+
 section .logo span {
     color: #219150;
 }
@@ -67,11 +79,13 @@ section .navbar {
 section .navbar a {
     display: block;
     margin-top: 1rem;
-    margin-left: 1rem;
-    color: #fff;
+    color: #333;
     text-decoration: none;
     font-size: 1.3rem;
     text-align: center;
+    background-color: #ccc;
+    width: 100%;
+    padding: 0.5rem 0;
 }
 
 /* post start */
@@ -152,7 +166,7 @@ section .navbar a {
 
 .container-table .pagination-posts nav ul li a {
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1rem;
     padding: 0.5rem 1rem;
     background-color: #219150;
     text-decoration: none;

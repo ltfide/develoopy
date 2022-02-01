@@ -18,7 +18,6 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {   
-
         // return Post::where("category_id", $category->id)->latest()->paginate(3);
         return view("category", [
             "categories" => Post::where("category_id", $category->id)->latest()->paginate(5),

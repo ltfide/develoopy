@@ -66,6 +66,18 @@ header .header-container {
     font-size: 1rem;
 }
 
+.header-container .menu a.active {
+    color: var(--main-color);
+    font-weight: 600;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--main-color);
+    /* border-width: 2px; */
+}
+
+.header-container .menu a:hover {
+    color: var(--main-color);
+}
+
 section {
     padding: 1rem 15%;
 }
@@ -115,7 +127,7 @@ section {
     display: flex;
     gap: 1.5rem;
     margin-top: 1rem;
-    border: 2px solid #333;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
     padding: 0.5rem;
     position: relative;
 }
@@ -140,7 +152,7 @@ section {
     top: 0;
     left: 0;
     padding: 0.4rem;
-    background-color: #333;
+    background-color: rgba(0, 0, 0, 0.5);
     color: #fff;
 }
 

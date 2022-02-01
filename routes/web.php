@@ -18,18 +18,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get("/", [PostController::class, "index"]);
-Route::get("/post/{post:slug}", [PostController::class, "post"]);
-
-Route::get("/category", [CategoryController::class, "index"]);
-Route::get("/category/{category:slug}", [CategoryController::class, "show"]);
-
-// Route::get("/dashboard", [DashboardController::class, "index"]);
-// Route::get("/dashboard/create", [DashboardController::class, "create"]);
-// Route::post("/dashboard/create", [DashboardController::class, "store"]);
-// Route::get("/dashboard/edit", [DashboardController::class, "edit"]);
-
-Route::resource("/dashboard/posts", DashboardController::class);
+Route::get("/", [PostController::class, "index"])->name("home");
+Route::get("/post/{post:slug}", [PostController::class, "post"])->name("post-show");
 
 
+Route::prefix("category")->group(function () {
+    Route::get("/", [CategoryController::class, "index"]);
+    Route::get("/{category:slug}", [CategoryController::class, "show"]);
+});
 
+Route::resource("/dashboard/posts", DashboardController::class)->middleware("auth:sanctum");
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return redirect("/dashboard/posts");
+})->name('dashboard');
