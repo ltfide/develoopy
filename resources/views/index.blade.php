@@ -4,7 +4,7 @@
     <!-- navbar start -->
      <nav class="navbar" id="navbar">
       <div class="navbar-container">
-        <h2 class="text-navbar">Learn what you want learn</h2>
+        <h2 class="text-navbar"></h2>
         <a href="#posts" class="btn">Get Started</a>
       </div>
     </nav>
@@ -30,10 +30,15 @@
           </div>
         </div>
         <div class="category-posts">
-          <h2 class="text">Support Us</h2>
-          <a href="#" class="supp">Support</a>
+          <h2 class="text">Follow Us</h2>
+          <a href="https://web.facebook.com/lupi.6lima/" class="supp facebook" target="__blank">
+            <i class="fab fa-facebook-square"></i> 
+            <span> Facebook</span></a>
+          <a href="https://github.com/ltfide" class="supp github" target="__blank">
+            <i class="fab fa-github-square"></i>
+            <span>Github</span></a>
+          <a href="https://instagra.com/ltfide" class="supp instagram" target="__blank"><i class="fab fa-instagram"></i>Instagram</a>
         </div>
-        
       </div>
     </section>
     <!-- post article end -->

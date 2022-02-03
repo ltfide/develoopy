@@ -55,7 +55,7 @@ class DashboardController extends Controller
 
         $save["slug"] = Str::slug($request->title, "-");
         $save["excerpt"] = Str::limit(strip_tags($request->body), 150);
-        $save["user_id"] = 6;
+        $save["user_id"] = 8;
         Post::create($save);
 
         return redirect("/dashboard/posts");
@@ -117,7 +117,7 @@ class DashboardController extends Controller
             $validateData["image"] = $request->file("image")->store("post-images");
         }
         
-        $validateData["user_id"] = 6;
+        $validateData["user_id"] = 8;
         $validateData["excerpt"] = Str::limit(strip_tags($request->body), 100);
 
         Post::where("id", $post->id)->update($validateData);

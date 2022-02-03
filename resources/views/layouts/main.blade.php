@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset("/css/style.css") }}" />
     <link rel="stylesheet" href={{ asset("/css/post.css") }} />
     <link rel="stylesheet" href={{ asset("/css/category.css") }} />
+    <link rel="stylesheet" href="{{ asset("/fontawesome/css/all.css") }}">
   </head>
   <body>
     

@@ -1,7 +1,10 @@
 <!-- header start -->
 <header>
   <div class="header-container">
-   <a href="{{ route("home") }}"><h2 class="logo">Space <span>Dev</span></h2></a>
+   <a href="{{ route("home") }}" class="logo">
+    <i class="fas fa-laptop-code"></i>
+    {{-- <img src="{{ asset("/img/logo.png") }}" alt="">  --}}
+    Deve<span>loopy</span></a>
     <div class="menu">
       <a href="{{ route("home") }}" class="{{ Request::is("/") ? "active" : "" }}">Home</a>
       <a href="/category" class="{{ Request::is("category*") ? "active" : "" }}">Category</a>

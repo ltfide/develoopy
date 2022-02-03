@@ -6,7 +6,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Fira Code";
+    font-family: "Inter";
     text-decoration: none;
 }
 
@@ -49,6 +49,20 @@ header .header-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.header-container .logo {
+    color: #333;
+    font-size: 1.7rem;
+    font-weight: 600;
+    display: flex;
+}
+
+.header-container .logo i {
+    margin-top: 0.4rem;
+    margin-right: 0.7rem;
+    font-size: 1.5rem;
+    color: var(--main-color);
 }
 
 .header-container .logo span {
@@ -110,6 +124,7 @@ section {
     max-width: 1280px;
     margin: auto;
     display: flex;
+    justify-content: space-between;
     gap: 1rem;
 }
 
@@ -187,8 +202,7 @@ section {
 }
 
 #posts .container-posts .category-posts {
-    width: 25%;
-    text-align: center;
+    width: 20%;
 }
 
 #posts .container-posts .category-posts .text {
@@ -196,17 +210,60 @@ section {
 }
 
 #posts .container-posts .category-posts .supp {
-    display: inline-block;
-    margin-top: 1rem;
+    width: 70%;
+    display: block;
+    margin: auto;
     text-align: center;
-    padding: 1rem;
-    background-color: var(--main-color);
+    padding: 0.5rem 1rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+}
+
+#posts .container-posts .category-posts .supp.facebook {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+    gap: 1rem;
+    align-items: center;
+    background-color: #0d8bf1;
     color: #fff;
 }
 
-#posts .container-posts .category-posts .supp:hover {
-    background-color: #1db95e;
+#posts .container-posts .category-posts .supp.github {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+    background-color: #24292f;
+    color: #fff;
 }
+
+#posts .container-posts .category-posts .supp .fa-github-square {
+    margin-left: -1.4rem;
+}
+
+#posts .container-posts .category-posts .supp.instagram {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+    background: linear-gradient(
+        45deg,
+        #f09433 0%,
+        #e6683c 25%,
+        #dc2743 50%,
+        #cc2366 75%,
+        #bc1888 100%
+    );
+    color: #fff;
+}
+
+#posts .container-posts .category-posts .supp i {
+    font-size: 2rem;
+}
+
+/* #posts .container-posts .category-posts .supp:hover {
+    background-color: #1db95e;
+} */
 
 /* footer start */
 
