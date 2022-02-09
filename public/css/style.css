@@ -6,7 +6,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Inter";
+    font-family: "Quicksand";
     text-decoration: none;
 }
 
@@ -69,27 +69,12 @@ header .header-container {
     color: var(--main-color);
 }
 
-.header-container .menu {
-    display: flex;
-    gap: 1.5rem;
-}
-
-.header-container .menu a {
-    text-transform: capitalize;
-    color: #444;
-    font-size: 1rem;
-}
-
-.header-container .menu a.active {
+.header-container a.active {
     color: var(--main-color);
     font-weight: 600;
     padding-bottom: 5px;
     border-bottom: 2px solid var(--main-color);
     /* border-width: 2px; */
-}
-
-.header-container .menu a:hover {
-    color: var(--main-color);
 }
 
 section {
@@ -235,6 +220,7 @@ section {
     align-items: center;
     background-color: #24292f;
     color: #fff;
+    margin-top: 0.5rem;
 }
 
 #posts .container-posts .category-posts .supp .fa-github-square {
@@ -246,6 +232,7 @@ section {
     justify-content: center;
     gap: 1rem;
     align-items: center;
+    margin-top: 0.5rem;
     background: linear-gradient(
         45deg,
         #f09433 0%,
@@ -264,6 +251,21 @@ section {
 /* #posts .container-posts .category-posts .supp:hover {
     background-color: #1db95e;
 } */
+
+/*  Pagination */
+nav .pagination li {
+    display: inline-block;
+    font-size: 1.5rem;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    background: seagreen;
+    margin-bottom: 2rem;
+}
+
+nav .pagination li.active {
+    background: #333;
+    color: #fff;
+}
 
 /* footer start */
 

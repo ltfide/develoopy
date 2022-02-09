@@ -11,14 +11,15 @@ class PostController extends Controller
     {
         // $data = Post::latest()->paginate(7);
         return view("index", [
-            "data" => Post::latest()->paginate(7)
+            "data" => Post::latest()->paginate(9),
         ]);
     }
 
     public function post(Post $post) 
     {
         return view("post", [
-            "post" => $post
+            "post" => $post,
+            "title" => "OK"
         ]);
     }
 }
