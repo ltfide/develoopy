@@ -15,7 +15,7 @@
       </div>
     </header>
     <section>
-      <a href="/dashboard/posts"><h2 class="logo">Space <span>Dev</span></h2></a>
+      <a href="/dashboard/posts"><h2 class="logo">Deve<span>loopy</span></h2></a>
       <div class="navbar">
         <a href="/dashboard/posts">All Post</a>
       </div>

@@ -21,7 +21,7 @@
     {{-- single post start --}}
 
     <section class="lg:container bg-white lg:bg-transparent lg:w-3/4 mt-28 mb-5 px-8">
-      <div class="lg:bg-white lg:rounded lg:py-6 lg:px-9">
+      <div class="lg:bg-white lg:shadow lg:rounded lg:py-6 lg:px-9">
         <div class="flex my-3 items-center gap-2">
           <img class="rounded-full w-12 h-12" src="/../img/me.jpg" alt="profil" />
             <div class="">

@@ -23,8 +23,9 @@ Route::get("/post/{post:slug}", [PostController::class, "post"])->name("post-sho
 
 
 Route::prefix("category")->group(function () {
-    Route::get("/", [CategoryController::class, "index"]);
-    Route::get("/{category:slug}", [CategoryController::class, "show"]);
+    Route::get("/", [CategoryController::class, "index"])->name("all-category");
+    Route::get("/programming", [CategoryController::class, "programming"])->name("category-programming");
+    Route::get("/programming/{category:slug}", [CategoryController::class, "show"])->name("show-programming");
 });
 
 Route::resource("/dashboard/posts", DashboardController::class)->middleware("auth:sanctum");

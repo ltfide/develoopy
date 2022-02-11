@@ -8,7 +8,7 @@
     <link rel="icon" href="{{ asset("/img/brackets.png") }}">
     <link rel="stylesheet" href="{{ asset("/css/style.css") }}" />
     {{-- <link rel="stylesheet" href={{ asset("/css/post.css") }} /> --}}
-    <link rel="stylesheet" href={{ asset("/css/category.css") }} />
+    {{-- <link rel="stylesheet" href={{ asset("/css/category.css") }} /> --}}
     <link rel="stylesheet" href="{{ asset("/fontawesome/css/all.css") }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -17,8 +17,8 @@
         theme: {
           extend: {
             container: {
+            padding: "8rem",
             center: true,
-            padding: "9rem",
             screens: {
               lg: "1124px",
               xl: "1124px",
@@ -33,9 +33,7 @@
   </head>
   <body class="bg-[#F8F9FA]">
     
-    <div class="w-full bg-white shadow fixed top-0 left-0">
-      @include('partials.navbar')
-    </div>
+    @include('partials.navbar')
 
     @yield('container')
 

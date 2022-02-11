@@ -44,7 +44,6 @@ header {
 }
 
 header .header-container {
-    max-width: 1280px;
     margin: auto;
     display: flex;
     align-items: center;
@@ -75,10 +74,6 @@ header .header-container {
     padding-bottom: 5px;
     border-bottom: 2px solid var(--main-color);
     /* border-width: 2px; */
-}
-
-section {
-    padding: 1rem 15%;
 }
 
 /* navbar start */

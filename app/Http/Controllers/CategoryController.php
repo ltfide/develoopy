@@ -16,6 +16,12 @@ class CategoryController extends Controller
         return view("categories", compact("categories"));
     }
 
+    public function programming()
+    {
+        $categories = Category::all();
+        return view("categories", compact("categories"));
+    }
+
     public function show(Category $category)
     {   
         // return Post::where("category_id", $category->id)->latest()->paginate(3);
