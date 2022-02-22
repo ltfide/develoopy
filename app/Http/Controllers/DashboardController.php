@@ -53,6 +53,26 @@ class DashboardController extends Controller
             $save['image'] = $request->file('image')->store('post-images');
         }
 
+        if($request->hasFile('file')) {
+            //get filename with extension
+            $filenamewithextension = $request->file('file')->getClientOriginalName();
+     
+            //get filename without extension
+            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+     
+            //get file extension
+            $extension = $request->file('file')->getClientOriginalExtension();
+     
+            //filename to store
+            $filenametostore = $filename.'_'.time().'.'.$extension;
+     
+            //Upload File
+            $request->file('file')->storeAs('public/post-images', $filenametostore);
+     
+            // you can save image path below in database
+            $path = asset('storage/post-images/'.$filenametostore);
+        }
+
         $save["slug"] = Str::slug($request->title, "-");
         $save["excerpt"] = Str::limit(strip_tags($request->body), 150);
         $save["user_id"] = 8;

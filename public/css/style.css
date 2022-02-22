@@ -251,14 +251,22 @@ header .header-container {
 nav .pagination li {
     display: inline-block;
     font-size: 1.5rem;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    background: seagreen;
+    color: seagreen;
+    /* padding: 0.5rem 1.3rem; */
+    width: 3rem;
+    height: 3rem;
+    padding-top: 3px;
+    font-weight: 700;
+    border-radius: 50%;
+    background: white;
     margin-bottom: 2rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+        0 4px 6px -4px rgb(0 0 0 / 0.1);
+    border: 1px solid seagreen;
 }
 
 nav .pagination li.active {
-    background: #333;
+    background: #16a34a;
     color: #fff;
 }
 

@@ -13,10 +13,11 @@
         @endforeach
       </select>
       <input type="file" name="image" />
-      <input type="hidden" id="programming" name="body" />
-      <trix-editor input="programming"></trix-editor>
+      <textarea id="summernote" name="body"></textarea>
       <button type="submit" class="create">Create</button>
     </form>
   </div>
 </div>
+
+
 @endsection

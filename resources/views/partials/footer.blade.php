@@ -6,7 +6,7 @@
       <h3>Subscribe for latest updates</h3>
       <input type="text" placeholder="enter your email" />
       <button class="btn">Subscribe</button>
-      <a href=""><span>Created By :</span> Lutfi Dendiansyah</a>
+      <a href="#artikel"><span>Created By :</span> Lutfi Dendiansyah</a>
     </div>
   </div>
 </footer>
