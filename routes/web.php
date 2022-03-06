@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +26,15 @@ Route::get('/paginate-more-products-ajax', [PostController::class,'paginate_more
 
 Route::prefix("category")->group(function () {
     Route::get("/", [CategoryController::class, "index"])->name("all-category");
-    Route::get("/programming", [CategoryController::class, "programming"])->name("category-programming");
+    Route::get("/programming", [CategoryController::class, "programming"])->name("programming-category");
     Route::get("/programming/{category:slug}", [CategoryController::class, "show"])->name("show-programming");
+    Route::get('/matematika', [CategoryController::class, 'math'])->name('math-category');
+});
+
+Route::group(['middleware' => ['auth:sanctum', 'hakses:admin']], function () {
+    Route::get('/satu', function () {
+        return 'ok';
+    });
 });
 
 Route::resource("/dashboard/posts", DashboardController::class)->middleware("auth:sanctum");

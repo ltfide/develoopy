@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreDashboardRequest;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Path\To\DOMDocument;
+use Intervention\Image\ImageManagerStatic;
+
 
 class DashboardController extends Controller
 {
@@ -40,44 +44,60 @@ class DashboardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreDashboardRequest $request)
     {
-        $save = $request->validate([
-            "title" => "required|max:255",
-            "image" => "image|file|max:2048",
-            "body" => "required",
-            "category_id" => "required"
-        ]);
+        // $save = $request->validate([
+        //     "title" => "required|max:255",
+        //     "image" => "image|file|max:2048",
+        //     "body" => "required",
+        //     "category_id" => "required"
+        // ]);
 
+        // $storage="storage/post-images";
+        // $dom=new \DOMDocument();
+        // libxml_use_internal_errors(true);
+        // $dom->loadHTML($request->body,LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NOIMPLIED);
+        // libxml_clear_errors();
+        // $images=$dom->getElementsByTagName('img');
+        // foreach($images as $img){
+        //     $src=$img->getAttribute('src');
+        //     if(preg_match('/data:image/',$src)){
+        //         preg_match('/data:image\/(?<mime>.*?)\;/',$src,$groups);
+        //         $mimetype=$groups['mime'];
+        //         $fileNameContent=uniqid();
+        //         $fileNameContentRand=substr(md5($fileNameContent),6,6).'_'.time();
+        //         $filepath=("$storage/$fileNameContentRand.$mimetype");
+        //         $image= ImageManagerStatic::make($src)
+        //             ->encode($mimetype,100)
+        //             ->save(public_path($filepath));
+        //         $new_src=asset($filepath);
+        //         $img->removeAttribute('src');
+        //         $img->setAttribute('src',$new_src);
+        //     }
+        // }
+
+        // if($request->file('image')) {
+        //     $save['image'] = $request->file('image')->store('post-images');
+        // }
+
+        // $save["slug"] = Str::slug($request->title, "-");
+        // $save["excerpt"] = Str::limit(strip_tags($request->body), 150);
+        // $save["body"] = $dom->saveHTML();
+        // $save["user_id"] = 1;
+        $request->validate();
         if($request->file('image')) {
-            $save['image'] = $request->file('image')->store('post-images');
+            $validate['image'] = $request->file('image')->store('post-images');
         }
 
-        if($request->hasFile('file')) {
-            //get filename with extension
-            $filenamewithextension = $request->file('file')->getClientOriginalName();
-     
-            //get filename without extension
-            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
-     
-            //get file extension
-            $extension = $request->file('file')->getClientOriginalExtension();
-     
-            //filename to store
-            $filenametostore = $filename.'_'.time().'.'.$extension;
-     
-            //Upload File
-            $request->file('file')->storeAs('public/post-images', $filenametostore);
-     
-            // you can save image path below in database
-            $path = asset('storage/post-images/'.$filenametostore);
-        }
+        $validate["slug"] = Str::slug($request->title, "-");
+        $validate["excerpt"] = Str::limit(strip_tags($request->body), 150);
+        
+        $validate["user_id"] = '1';
+        // Post::create($request->all());
 
-        $save["slug"] = Str::slug($request->title, "-");
-        $save["excerpt"] = Str::limit(strip_tags($request->body), 150);
-        $save["user_id"] = 8;
-        Post::create($save);
-
+        return $validate;
+        
+        Post::create($validate);
         return redirect("/dashboard/posts");
     }
 
@@ -124,6 +144,29 @@ class DashboardController extends Controller
             "category_id" => "required"
         ];
 
+        $storage="storage/post-images";
+        $dom=new \DOMDocument();
+        libxml_use_internal_errors(true);
+        $dom->loadHTML($request->body,LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NOIMPLIED);
+        libxml_clear_errors();
+        $images=$dom->getElementsByTagName('img');
+        foreach($images as $img){
+            $src=$img->getAttribute('src');
+            if(preg_match('/data:image/',$src)){
+                preg_match('/data:image\/(?<mime>.*?)\;/',$src,$groups);
+                $mimetype=$groups['mime'];
+                $fileNameContent=uniqid();
+                $fileNameContentRand=substr(md5($fileNameContent),6,6).'_'.time();
+                $filepath=("$storage/$fileNameContentRand.$mimetype");
+                $image= ImageManagerStatic::make($src)
+                    ->encode($mimetype,100)
+                    ->save(public_path($filepath));
+                $new_src=asset($filepath);
+                $img->removeAttribute('src');
+                $img->setAttribute('src',$new_src);
+            }
+        }
+
         
         $validateData = $request->validate($edit);
         if ($request->slug != $post->slug) {
@@ -137,8 +180,9 @@ class DashboardController extends Controller
             $validateData["image"] = $request->file("image")->store("post-images");
         }
         
-        $validateData["user_id"] = 8;
+        $validateData["user_id"] = 1;
         $validateData["excerpt"] = Str::limit(strip_tags($request->body), 100);
+        $validateData["body"] = $dom->saveHTML();
 
         Post::where("id", $post->id)->update($validateData);
 

@@ -9,11 +9,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        // $data = Post::latest()->paginate(7);
-        // return view("index", [
-        //     "data" => Post::latest()->paginate(9),
-        // ]);
-        $data = Post::paginate(9);
+        $data = Post::paginate(8);
         return view('index')->with('posts',$data);
     }
 
@@ -28,7 +24,7 @@ class PostController extends Controller
     public function paginate_more_products_ajax(Request $request)
     {
         if($request->ajax()){
-            $data = Post::latest()->paginate(9);
+            $data = Post::latest()->paginate(8);
         
             return view('ajax-list-view', compact("data"))->with('posts',$data)->render();
         }

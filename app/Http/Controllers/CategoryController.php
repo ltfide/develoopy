@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Programming;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,21 +14,26 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view("categories", compact("categories"));
+        return view("category.categories", compact("categories"));
     }
 
     public function programming()
     {
-        $categories = Category::all();
-        return view("categories", compact("categories"));
+        $categories = Programming::all();
+        return view("category.programming", compact("categories"));
     }
 
-    public function show(Category $category)
+    public function show(Programming $category)
     {   
-        // return Post::where("category_id", $category->id)->latest()->paginate(3);
-        return view("category", [
-            "categories" => Post::where("category_id", $category->id)->latest()->paginate(5),
+        return view(".category.category", [
+            "categories" => Post::where("category_id", $category->id)->latest()->paginate(9),
             "title" => $category->name,
         ]);
+    }
+
+    public function math()
+    {
+        $categories = Category::all();
+        return view("category.math", compact("categories"));
     }
 }

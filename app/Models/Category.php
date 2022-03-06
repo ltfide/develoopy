@@ -9,10 +9,10 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["name", "slug"];
+    protected $fillable = ["name", "slug", 'category_logo'];
 
     public function post()
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Programming::class);
     }
 }

@@ -68,7 +68,7 @@ header .header-container {
     color: var(--main-color);
 }
 
-.header-container a.active {
+.active {
     color: var(--main-color);
     font-weight: 600;
     padding-bottom: 5px;

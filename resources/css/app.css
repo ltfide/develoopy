@@ -1,3 +1,49 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+#post img {
+    text-align: center;
+    max-width: 95%;
+    margin: 1rem 0;
+}
+
+#post {
+    margin: 1rem 0;
+}
+
+#post h1 {
+    font-size: 2.5rem !important;
+    font-weight: 700;
+}
+#post h2 {
+    font-size: 2.25rem !important;
+    font-weight: 700;
+}
+#post h3 {
+    font-size: 2rem !important;
+    font-weight: 700;
+}
+#post h4 {
+    font-size: 1.75rem !important;
+    font-weight: 700;
+}
+#post h5 {
+    font-size: 1.5rem !important;
+    font-weight: 700;
+}
+
+#post pre {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace; /* 1 */
+    font-size: 1em; /* 2 */
+    padding: 1rem !important;
+    border-radius: 0.5rem !important;
+    color: rgb(203, 206, 188);
+    background-color: rgb(20, 24, 36);
+    font-family: "Fira Code", Consolas, "Courier New", monospace;
+    font-size: 14px;
+    line-height: 19px;
+    white-space: pre;
+    overflow: auto;
+}

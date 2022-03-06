@@ -11,7 +11,7 @@
     {{-- <link rel="stylesheet" href={{ asset("/css/post.css") }} /> --}}
     {{-- <link rel="stylesheet" href={{ asset("/css/category.css") }} /> --}}
     <link rel="stylesheet" href="{{ asset("/fontawesome/css/all.css") }}">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
@@ -32,10 +32,7 @@
       }
     </script>
     <style>
-      #post img{
-        margin: auto;
-        padding: 1rem 0;
-      }
+      
     </style>
   </head>
   <body class="bg-[#F8F9FA]" id="body">
