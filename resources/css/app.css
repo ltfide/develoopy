@@ -5,11 +5,17 @@
 #post img {
     text-align: center;
     max-width: 95%;
-    margin: 1rem 0;
+    padding: 1rem 0;
+    margin: auto !important;
 }
 
 #post {
     margin: 1rem 0;
+}
+
+#post p {
+    font-size: 1.3rem !important;
+    color: #333;
 }
 
 #post h1 {

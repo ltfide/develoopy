@@ -17,12 +17,6 @@ class CategoryController extends Controller
         return view("category.categories", compact("categories"));
     }
 
-    public function programming()
-    {
-        $categories = Programming::all();
-        return view("category.programming", compact("categories"));
-    }
-
     public function show(Programming $category)
     {   
         return view(".category.category", [
@@ -31,9 +25,10 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function math()
+    public function math(Category $category)
     {
-        $categories = Category::all();
-        return view("category.math", compact("categories"));
+        $categories = Programming::where('programming_id', $category->id)->get();
+        $title = $category->name;
+        return view("category.math", compact("categories", "title"));
     }
 }

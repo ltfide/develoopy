@@ -29,7 +29,7 @@ class StoreDashboardRequest extends FormRequest
             "title" => "required|max:255",
             "image" => "image|file|max:2048",
             "body" => "required",
-            "category_id" => "required"
+            "sub_category_id" => "required"
         ];
 
     }

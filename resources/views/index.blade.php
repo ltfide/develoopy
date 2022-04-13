@@ -5,8 +5,8 @@
       <section class="lg:container lg:w-5/6 mx-auto flex flex-1 lg:px-0 flex-col-reverse lg:flex-row justify-between items-center">
         <div class="lg:w-1/3 text-center lg:text-left py-8">
           <h1 class="text-white text-5xl lg:text-6xl font-bold">Develoopy</h1>
-          <p class="lg:text-2xl text-xl my-6 text-white">Coretan tentang <a class="underline" href="{{ route("programming-category") }}">Programming</a>, <a href="{{ route('math-category') }}" class="underline">Matematika</a> dan <span class="underline">Bahasa Inggris.</span></p>
-          <a class="py-3 px-4 rounded shadow bg-white" href="{{ route('all-category') }}">Mulai Belajar</a>
+          <p class="lg:text-2xl text-xl my-6 text-white">Coretan tentang <a class="underline" href="">Programming</a>, <a href="" class="underline">Matematika</a> dan <span class="underline">Bahasa Inggris.</span></p>
+          <a class="py-3 px-4 rounded shadow bg-white" href="">Mulai Belajar</a>
         </div>
         <img class="hidden sm:block bg-right py-8  h-96 " src="{{ asset("/img/programmer.svg") }}" alt="">
       </section>
@@ -30,7 +30,9 @@
       </div>  
       <input type="hidden" name="hidden_page" id="hidden_page" value="1">
     </section>
-
-   
-    
 @endsection
+
+@push('script')
+    <script src="{{ asset('js/index.js') }}"></script>
+@endpush
+

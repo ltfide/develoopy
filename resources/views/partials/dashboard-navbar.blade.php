@@ -1,6 +1,6 @@
     <header>
       <div class="container">
-        <div class="menu">
+        <div class="flex items-center justify-center">
           <a href="/user/profile">{{ Auth::user()->name }}</a>
           <form method="POST" action="{{ route('logout') }}">
             @csrf
@@ -18,6 +18,6 @@
       <a href="/dashboard/posts"><h2 class="logo">Deve<span>loopy</span></h2></a>
       <div class="navbar">
         <a href="/dashboard/posts">All Post</a>
-        <a href="/satu">Middleware Post</a>
+        <a href="/dashboard/categories">Create Categories</a>
       </div>
     </section>

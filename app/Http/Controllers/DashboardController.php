@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreDashboardRequest;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Programming;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -21,7 +23,7 @@ class DashboardController extends Controller
      */
     public function index()
     {   
-        return view("dashboard.index", [
+        return view("dashboard.posts.index", [
             "posts" => Post::latest()->paginate(10)
         ]);
     }
@@ -33,8 +35,8 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        return view("Dashboard.create", [
-            "categories" => Category::all()
+        return view("Dashboard.posts.create", [
+            "categories" => SubCategory::all()
         ]);
     }
 
@@ -46,35 +48,28 @@ class DashboardController extends Controller
      */
     public function store(StoreDashboardRequest $request)
     {
-        // $save = $request->validate([
-        //     "title" => "required|max:255",
-        //     "image" => "image|file|max:2048",
-        //     "body" => "required",
-        //     "category_id" => "required"
-        // ]);
-
-        // $storage="storage/post-images";
-        // $dom=new \DOMDocument();
-        // libxml_use_internal_errors(true);
-        // $dom->loadHTML($request->body,LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NOIMPLIED);
-        // libxml_clear_errors();
-        // $images=$dom->getElementsByTagName('img');
-        // foreach($images as $img){
-        //     $src=$img->getAttribute('src');
-        //     if(preg_match('/data:image/',$src)){
-        //         preg_match('/data:image\/(?<mime>.*?)\;/',$src,$groups);
-        //         $mimetype=$groups['mime'];
-        //         $fileNameContent=uniqid();
-        //         $fileNameContentRand=substr(md5($fileNameContent),6,6).'_'.time();
-        //         $filepath=("$storage/$fileNameContentRand.$mimetype");
-        //         $image= ImageManagerStatic::make($src)
-        //             ->encode($mimetype,100)
-        //             ->save(public_path($filepath));
-        //         $new_src=asset($filepath);
-        //         $img->removeAttribute('src');
-        //         $img->setAttribute('src',$new_src);
-        //     }
-        // }
+        $storage="storage/post-images";
+        $dom=new \DOMDocument();
+        libxml_use_internal_errors(true);
+        $dom->loadHTML($request->body,LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NOIMPLIED);
+        libxml_clear_errors();
+        $images=$dom->getElementsByTagName('img');
+        foreach($images as $img){
+            $src=$img->getAttribute('src');
+            if(preg_match('/data:image/',$src)){
+                preg_match('/data:image\/(?<mime>.*?)\;/',$src,$groups);
+                $mimetype=$groups['mime'];
+                $fileNameContent=uniqid();
+                $fileNameContentRand=substr(md5($fileNameContent),6,6).'_'.time();
+                $filepath=("$storage/$fileNameContentRand.$mimetype");
+                $image= ImageManagerStatic::make($src)
+                    ->encode($mimetype,100)
+                    ->save(public_path($filepath));
+                $new_src=asset($filepath);
+                $img->removeAttribute('src');
+                $img->setAttribute('src',$new_src);
+            }
+        }
 
         // if($request->file('image')) {
         //     $save['image'] = $request->file('image')->store('post-images');
@@ -84,7 +79,7 @@ class DashboardController extends Controller
         // $save["excerpt"] = Str::limit(strip_tags($request->body), 150);
         // $save["body"] = $dom->saveHTML();
         // $save["user_id"] = 1;
-        $request->validate();
+        $validate = $request->validated();
         if($request->file('image')) {
             $validate['image'] = $request->file('image')->store('post-images');
         }
@@ -95,8 +90,7 @@ class DashboardController extends Controller
         $validate["user_id"] = '1';
         // Post::create($request->all());
 
-        return $validate;
-        
+
         Post::create($validate);
         return redirect("/dashboard/posts");
     }
@@ -122,9 +116,9 @@ class DashboardController extends Controller
      */
     public function edit(Post $post)
     {
-        return view("Dashboard.edit", [
+        return view("dashboard.posts.edit", [
             "post" => $post,
-            "categories" => Category::all()
+            "categories" => SubCategory::all()
         ]);
     }
 
@@ -141,7 +135,7 @@ class DashboardController extends Controller
             "title" => "required|max:255",
             "image" => "image|file|max:1024",
             "body" => "required",
-            "category_id" => "required"
+            "sub_category_id" => "required"
         ];
 
         $storage="storage/post-images";

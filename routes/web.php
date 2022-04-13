@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostController;
@@ -26,18 +27,14 @@ Route::get('/paginate-more-products-ajax', [PostController::class,'paginate_more
 
 Route::prefix("category")->group(function () {
     Route::get("/", [CategoryController::class, "index"])->name("all-category");
-    Route::get("/programming", [CategoryController::class, "programming"])->name("programming-category");
+    // Route::get("/programming", [CategoryController::class, "programming"])->name("programming-category");
     Route::get("/programming/{category:slug}", [CategoryController::class, "show"])->name("show-programming");
-    Route::get('/matematika', [CategoryController::class, 'math'])->name('math-category');
-});
-
-Route::group(['middleware' => ['auth:sanctum', 'hakses:admin']], function () {
-    Route::get('/satu', function () {
-        return 'ok';
-    });
+    Route::get('/{category:slug}', [CategoryController::class, 'math']);
+    Route::get("/matematika/{category:slug}", [CategoryController::class, "show-math"])->name("show-math");
 });
 
 Route::resource("/dashboard/posts", DashboardController::class)->middleware("auth:sanctum");
+Route::resource("/dashboard/categories", CategoriesController::class)->middleware("auth:sanctum");
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return redirect("/dashboard/posts");
