@@ -23,7 +23,7 @@ class DashboardController extends Controller
      */
     public function index()
     {   
-        return view("dashboard.posts.index", [
+        return view("dashboard.index-dashboard", [
             "posts" => Post::latest()->paginate(10)
         ]);
     }
@@ -35,7 +35,7 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        return view("Dashboard.posts.create", [
+        return view("Dashboard.write.write", [
             "categories" => SubCategory::all()
         ]);
     }
@@ -116,7 +116,7 @@ class DashboardController extends Controller
      */
     public function edit(Post $post)
     {
-        return view("dashboard.posts.edit", [
+        return view("dashboard.write.update-dashboard", [
             "post" => $post,
             "categories" => SubCategory::all()
         ]);

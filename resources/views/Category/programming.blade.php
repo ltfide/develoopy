@@ -2,19 +2,39 @@
 
 @section('container')
 
-    <section class="mx-auto mt-24 mb-36 px-8 lg:px-0">
+    <section class="lg:py-28 px-8 lg:px-0" id="artikel">
       <div class="lg:container mx-auto lg:px-0 lg:w-5/6">
-      <div class="mb-6 text-lg font-semibold text-slate-500"><a href="{{ route("home") }}" class="hover:text-slate-700"><i class="fas fa-home mr-2"></i>Beranda</a></div>
-        <h2 class="text-4xl font-bold text-green-700">Kategori {{ $title }} : </h2>
-          <div class="flex gap-4 my-10">
-            @foreach ($categories as $category)
-                <a class="w-[90px] h-[80px]" href="{{ route('show-programming', $category->slug) }}">
-                  <img class="w-full h-[80px] bg-center" src="{{ asset($category->programming_logo) }}" alt="">
-                  <h3 class="text-lg text-center my-2 hover:text-green-700 hover:underline">{{ $category->name }}</h3>
-                </a>
+
+        <h1 class="text-4xl text-slate-600 font-bold"  >Kategori : Programming</h1>
+        <p class="text-lg text-slate-500 font-medium my-4">Total Post : {{ $programmingData->count() }}</p>
+
+        <div id="post-view">
+          <div class="grid grid-cols-1 gap-8 lg:gap-4 my-7 md:grid-cols-2 lg:grid-cols-4">
+
+            @foreach ($programmingData as $row)            
+              <div class="border h-96 min-h-full rounded shadow-lg relative">
+
+                <a href="/post/{{ $row->slug }}"><img class="my-4 px-0 border border-slate-200 w-full h-60 lg:h-52 bg-cover bg-center object-cover" src="{{ asset("storage/" . $row->image) }}" alt=""></a>
+
+                <a class="block text-left px-6 text-xl text-slate-600 font-semibold hover:underline" href="/post/{{ $row->slug }}">{{ $row->title }}</a>
+
+                <a class="inline-block px-6 py-1 bg-green-600 rounded text-white absolute bottom-4 left-0 border shadow hover:bg-green-700" id="btn" href="/category/{{ $row->category->slug ?? ""}}">{{ $row->field}}</a>
+
+                <span class="text-lg absolute bottom-4 right-0 border shadow">{{ $row->created_at }}</span>
+              </div>
             @endforeach
-          </div>
-      </div>
+
+            </div>
+
+            <section class="text-center mt-16 pagination">
+              {{-- {{ $programmingData->links() }} --}}
+            </section>
+
+        </div>
+        
+      </div>  
+      <input type="hidden" name="hidden_page" id="hidden_page" value="1">
     </section>
-    <!-- category end -->
+    
+
 @endsection

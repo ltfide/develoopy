@@ -9,7 +9,6 @@ use Illuminate\Support\Str;
 
 class CategoriesCreate extends Component
 {
-    public $mainName;
     public $name;
     public $category_id;
     public $show = true;
