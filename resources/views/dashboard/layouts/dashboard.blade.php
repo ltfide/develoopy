@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,13 +13,17 @@
 </head>
 <body class="font-inter bg-[#F5F7FB]">
 
-   @include('partials.dashboard-navbar2')
+   @include('dashboard.partials.navbar')
 
-   <section class="ml-6 mr-6 mt-4 lg:ml-64 lg:mt-24 lg:mr-6">
+   <section class="ml-0 pl-4 pr-8 md:ml-56 md:px-10">
       @yield('content-dashboard')
    </section>
 
-   <script src="{{ asset('js/summernote.js') }}"></script>
+   {{-- <section class="ml-6 mr-6 mt-4 lg:ml-64 lg:mt-24 lg:mr-6">
+      @yield('content-dashboard')
+   </section> --}}
+
+   
 
    @stack('scripts')
 

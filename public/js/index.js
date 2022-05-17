@@ -9,7 +9,7 @@ $(document).ready(function () {
     function getMorePage(pageNumber) {
         $.ajax({
             type: "GET",
-            url: "/paginate-more-products-ajax/" + "?page=" + pageNumber,
+            url: "/paginate-more-content/" + "?page=" + pageNumber,
             data: {},
             success: function (data) {
                 $("#post-view").html(data);

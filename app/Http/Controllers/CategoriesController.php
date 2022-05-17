@@ -14,7 +14,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('dashboard.categories.index');
+        return view('dashboard.features.categories.categories');
     }
 
     /**

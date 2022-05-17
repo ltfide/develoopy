@@ -22,7 +22,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get("/", [PostController::class, "index"])->name("home");
 Route::get("/post/{post:slug}", [PostController::class, "post"])->name("post-show");
-Route::get('/paginate-more-products-ajax', [PostController::class,'paginate_more_products_ajax'])->name('paginate-more-products-ajax');
+Route::get('/paginate-more-content', [PostController::class,'paginate_more_content'])->name('paginate-more-content');
 
 Route::get('/programming', [CategoryController::class, 'programming'])->name('show-programming');
 Route::get('/math', [CategoryController::class, 'math'])->name('show-math');

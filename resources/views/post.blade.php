@@ -9,8 +9,8 @@
                 <span class="text-green-600 text-lg">{{ $post->author->name }} |</span>
                 <span class="text-slate-600 text-lg">{{ $post->created_at->format("d F Y H:i") }}</span>
           </div>
-          <h1 class="lg:text-[2.5rem] md:text-4xl font-bold my-10">{{ $post->title }}</h1>
-          <img class="w-full h-[350px] border bg-contain shadow bg-center" src="{{ asset("storage/" . $post->image) }}" alt="thumbnail">
+          <h1 class="lg:text-[2.5rem] text-2xl md:text-4xl font-bold my-10">{{ $post->title }}</h1>
+          <img class="w-full h-[350px] border mb-14 bg-cover shadow bg-center" src="{{ asset("storage/" . $post->image) }}" alt="thumbnail">
           <div id="post">{!! $post->body !!}</div>
        </div>
       {{-- <div id="disqus_thread"></div>

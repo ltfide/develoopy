@@ -2,20 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreDashboardRequest;
-use App\Models\Category;
 use App\Models\Post;
+use App\Models\Category;
+use Path\To\DOMDocument;
 use App\Models\Programming;
 use App\Models\SubCategory;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Path\To\DOMDocument;
 use Intervention\Image\ImageManagerStatic;
-
+use App\Http\Requests\StoreDashboardRequest;
+use App\Services\CategoryService;
 
 class DashboardController extends Controller
 {
+    private CategoryService $categoryService;
+
+    public function __construct(CategoryService $categoryService)
+    {
+        $this->categoryService = $categoryService;
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +32,11 @@ class DashboardController extends Controller
     public function index()
     {   
         return view("dashboard.index-dashboard", [
-            "posts" => Post::latest()->paginate(10)
+            "posts" => Post::latest()->paginate(10),
+            'allPost' => Post::all(),
+            'math' => count($this->categoryService->getDataByCategory('Matematika')),
+            'programming' => count($this->categoryService->getDataByCategory('Programming')),
+            'english' => count($this->categoryService->getDataByCategory('English'))
         ]);
     }
 
@@ -35,7 +47,7 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        return view("Dashboard.write.write", [
+        return view("Dashboard.features.create", [
             "categories" => SubCategory::all()
         ]);
     }
@@ -92,7 +104,7 @@ class DashboardController extends Controller
 
 
         Post::create($validate);
-        return redirect("/dashboard/posts");
+        return redirect("/dashboard/posts")->with('success', 'Add Post Successfully');
     }
 
     /**
@@ -116,7 +128,7 @@ class DashboardController extends Controller
      */
     public function edit(Post $post)
     {
-        return view("dashboard.write.update-dashboard", [
+        return view("dashboard.features.update", [
             "post" => $post,
             "categories" => SubCategory::all()
         ]);
@@ -180,7 +192,7 @@ class DashboardController extends Controller
 
         Post::where("id", $post->id)->update($validateData);
 
-        return redirect("/dashboard/posts");
+        return redirect("/dashboard/posts")->with('success', 'Edit Post Successfully');
 
     }
 
@@ -198,6 +210,6 @@ class DashboardController extends Controller
 
         Post::destroy($post->id);
 
-        return back();
+        return back()->with('success', 'Delete Post Successfully');
     }
 }
