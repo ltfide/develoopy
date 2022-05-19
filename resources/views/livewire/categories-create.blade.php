@@ -9,7 +9,7 @@
           </div>
         @endif
       @endif
-      <form wire:submit.prevent="store">
+      {{-- <form wire:submit.prevent="store">
           <div>
             <label class="font-medium text-slate-700" for="reference">Category Reference</label>
             <select class="rounded" id="reference" wire:model="category_id">
@@ -30,5 +30,35 @@
             @enderror
           </div>
             <button class="py-2 px-5 bg-green-700 text-green-100 rounded shadow hover:bg-green-900" type="submit">Add Category</button>
-      </form>
+      </form> --}}
+
+      <form wire:submit.prevent="save">
+        <div class="flex gap-3" id="inputs">
+           
+            <div class="my-4 w-1/3">
+              <select wire:model="category_id" class="block w-full rounded outline-none border border-slate-400 @error('category') border border-red-500 @enderror" name="category" id="category_id">
+                <option value="">Choose Category :</option>
+                @foreach ($categories as $category)
+                  <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+              </select>
+              @error('category')
+                <small class="text-red-500">{{ $message }}</small>
+              @enderror
+            </div>
+
+           <div class="my-4 w-1/2">
+              <input wire:model="name" type="text" class="w-full rounded outline-none border border-slate-400 @error('name') border border-red-500 @enderror" placeholder="name">
+              @error('name')
+                 <small class="text-red-500">{{ $message }}</small>
+              @enderror
+           </div>
+
+           <div class="my-4 w-1/5 text-center">
+             <button class="w-full h-full px-6 text-center mx-auto bg-green-700 text-green-100 hover:bg-green-800 rounded shadow" type="submit" id="create">Create</button>
+           </div>
+
+        </div>
+        
+     </form>
 </div>

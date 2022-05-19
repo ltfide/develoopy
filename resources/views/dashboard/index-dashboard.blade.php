@@ -20,7 +20,7 @@
             <img class="w-14" src="{{ asset('img/icons/math.svg') }}" alt="">
             <div>
                <h3 class="text-slate-600">{{ $math }}</h3>
-               <p class="text-slate-600">Matematika</p>
+               <p class="text-slate-600">Math</p>
             </div>
          </div>
 

@@ -12,9 +12,9 @@
     <table class="border-collapse border border-slate-400 w-full">
         <thead>
           <tr>
-            <th class="border border-slate-300 bg-green-700 text-green-100 text-left p-1">No</th>
-            <th class="border border-slate-300 bg-green-700 text-green-100 text-left p-1">Category Name</th>
-            <th class="border border-slate-300 bg-green-700 text-green-100 text-left p-1">Reference</th>
+            <th class="border border-slate-300 bg-green-700 text-green-100 text-left p-1 w-10">No</th>
+            <th class="border border-slate-300 bg-green-700 text-green-100 text-left p-1">Name</th>
+            <th class="border border-slate-300 bg-green-700 text-green-100 text-left p-1">Category</th>
             <th class="border border-slate-300 bg-green-700 text-green-100 text-left p-1">Action</th>
           </tr>
         </thead>
@@ -24,7 +24,7 @@
                     <td class="border border-slate-300 p-1 ">{{ $categories->firstItem() + $index }} </td>
                     <td class="border border-slate-300 p-1 ">{{ $category->name }}</td>
                     <td class="border border-slate-300 p-1 ">{{ $category->category->name ?? "" }}</td>
-                    <td class="border border-slate-300 p-1 box-content ">
+                    <td class="border border-slate-300 p-1 box-content">
                         <button class="px-2 bg-green-600 text-green-100 rounded shadow" wire:click="showCategory({{ $category->id }})">Edit</button>
                         <button class="px-2 bg-red-600 text-green-100 rounded shadow" onclick="return confirm('Are You Sure?')" wire:click="delete({{ $category->id }})">Delete</button>
                     </td>

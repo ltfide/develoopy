@@ -1,4 +1,4 @@
-@extends('layouts.main')    
+@extends('home.layouts.main')    
 
 @section('container')
     <nav class="mt-16 mb-5 w-full bg-[#219150] px-8 lg:px-0">
@@ -27,7 +27,7 @@
             @foreach ($data as $item)
               <div class="w-32">
                 <a href="">
-                  <img class="w-full" src="{{ asset('img/' . $item->category_logo ) }}" alt="" title="{{ $item->name }}">
+                  <img class="w-full" src="{{ asset('storage/' . $item->category_logo ) }}" alt="" title="{{ $item->name }}">
                 </a>
               </div>
             @endforeach

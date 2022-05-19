@@ -35,12 +35,12 @@
   </head>
   <body class="bg-[#F8F9FA] font-inter" id="body">
 
-    @include('partials.navbar')
+    @include('home.partials.navbar')
 
     @yield('container')
 
 
-    @include('partials.footer')
+    @include('home.partials.footer')
 
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>

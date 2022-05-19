@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Category;
 use Livewire\Component;
+use App\Models\Category;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class MainCategoriesTable extends Component
 {
@@ -16,8 +18,10 @@ class MainCategoriesTable extends Component
 
     public function delete($id)
     {
+        Storage::delete(DB::table('categories')->where('id', $id)->value('category_logo'));
         $category = Category::find($id);
         $category->delete();
+
 
         session()->flash('success', 'Delete Category Successfully');
     }
@@ -30,7 +34,7 @@ class MainCategoriesTable extends Component
 
     public function render()
     {
-        $categories = Category::paginate(3);
+        $categories = Category::paginate(5);
         return view('livewire.main-categories-table', compact('categories'));
     }
 }

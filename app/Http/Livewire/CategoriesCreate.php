@@ -15,7 +15,7 @@ class CategoriesCreate extends Component
 
     protected $listeners = ['mainCategoryStore' => 'render'];
 
-    public function store()
+    public function save()
     {
         $this->validate([
             'name' => 'required',

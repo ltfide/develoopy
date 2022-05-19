@@ -49,7 +49,7 @@ class DashboardController extends Controller
     {
         return view("Dashboard.features.create", [
             "categories" => SubCategory::all()
-        ]);
+        ])->render();
     }
 
     /**
@@ -83,14 +83,6 @@ class DashboardController extends Controller
             }
         }
 
-        // if($request->file('image')) {
-        //     $save['image'] = $request->file('image')->store('post-images');
-        // }
-
-        // $save["slug"] = Str::slug($request->title, "-");
-        // $save["excerpt"] = Str::limit(strip_tags($request->body), 150);
-        // $save["body"] = $dom->saveHTML();
-        // $save["user_id"] = 1;
         $validate = $request->validated();
         if($request->file('image')) {
             $validate['image'] = $request->file('image')->store('post-images');
@@ -98,6 +90,7 @@ class DashboardController extends Controller
 
         $validate["slug"] = Str::slug($request->title, "-");
         $validate["excerpt"] = Str::limit(strip_tags($request->body), 150);
+        $validate["body"] = $dom->saveHTML();
         
         $validate["user_id"] = '1';
         // Post::create($request->all());
@@ -208,6 +201,14 @@ class DashboardController extends Controller
             Storage::delete($post->image);
         }
 
+        $body = DB::table('posts')->where('id', $post->id)->value('body');
+        $result = [];
+        if (preg_match_all("/post-images\/[\w.]+/i", $body, $result)) {
+            foreach($result[0] as $res) {
+                Storage::delete($res);
+            }
+        }
+        
         Post::destroy($post->id);
 
         return back()->with('success', 'Delete Post Successfully');

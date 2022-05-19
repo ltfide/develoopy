@@ -22,26 +22,26 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view("category.categories", compact("categories"));
+        return view("home.category.categories", compact("categories"));
     }
 
     public function math() {
         return response()
-                -> view('category.math', [
+                -> view('home.category.math', [
                     'mathData' => $this->categoryService->getDataByCategory('Matematika')
                 ]);
     }
 
     public function programming() {
         return response()
-                ->view('category.programming', [
+                ->view('home.category.programming', [
                     'programmingData' => $this->categoryService->getDataByCategory('Programming')
                 ]);
     }
 
     public function english() {
         return response()
-                -> view('category.english', [
+                -> view('home.category.english', [
                     'englishData' => $this->categoryService->getDataByCategory('English')
                 ]);
     }

@@ -1,17 +1,17 @@
-@extends('layouts.main')
+@extends('home.layouts.main')
 
 @section('container')
 
     <section class="lg:py-28 px-8 lg:px-0" id="artikel">
       <div class="lg:container mx-auto lg:px-0 lg:w-5/6">
 
-        <h1 class="text-4xl text-slate-600 font-bold"  >Kategori : Bahassa Inggris</h1>
-        <p class="text-lg text-slate-500 font-medium my-4">Total Post : {{ $englishData->count() }}</p>
+        <h1 class="text-4xl text-slate-600 font-bold"  >Kategori : Matematika</h1>
+        <p class="text-lg text-slate-500 font-medium my-4">Total Post : {{ $mathData->count() }}</p>
 
         <div id="post-view">
           <div class="grid grid-cols-1 gap-8 lg:gap-4 my-7 md:grid-cols-2 lg:grid-cols-4">
 
-            @foreach ($englishData as $row)            
+            @foreach ($mathData as $row)            
               <div class="border h-96 min-h-full rounded shadow-lg relative">
 
                 <a href="/post/{{ $row->slug }}"><img class="my-4 px-0 border border-slate-200 w-full h-60 lg:h-52 bg-cover bg-center object-cover" src="{{ asset("storage/" . $row->image) }}" alt=""></a>
@@ -27,7 +27,7 @@
             </div>
 
             <section class="text-center mt-16 pagination">
-              {{-- {{ $englishData->links() }} --}}
+              {{-- {{ $mathData->links() }} --}}
             </section>
 
         </div>

@@ -13,15 +13,21 @@
         <thead>
           <tr>
             <th class="border border-slate-300 bg-green-700 text-green-100 text-left p-1">No</th>
-            <th class="border border-slate-300 bg-green-700 text-green-100 text-left p-1">Category Name</th>
+            <th class="border border-slate-300 bg-green-700 text-green-100 text-left p-1">Logo</th>
+            <th class="border border-slate-300 bg-green-700 text-green-100 text-left p-1">Title</th>
+            <th class="border border-slate-300 bg-green-700 text-green-100 text-left p-1">Category</th>
             <th class="border border-slate-300 bg-green-700 text-green-100 text-left p-1">Action</th>
           </tr>
         </thead>
         <tbody>
             @foreach ($categories as $index => $category)
                 <tr>
-                    <td class="border border-slate-300 p-1 ">{{ $categories->firstItem() + $index }} </td>
-                    <td class="border border-slate-300 p-1 ">{{ $category->name }}</td>
+                    <td class="border border-slate-300 p-1 w-10">{{ $categories->firstItem() + $index }} </td>
+                    <td class="border border-slate-300 w-10">
+                      <img class="w-[80%] mx-auto" src="{{ asset('storage/' . $category->category_logo) }}" alt="">
+                    </td>
+                    <td class="border border-slate-300 p-1 w-1/4">{{ $category->name }}</td>
+                    <td class="border border-slate-300 p-1 ">{{ $category->category }}</td>
                     <td class="border border-slate-300 p-1 box-content ">
                         <button class="px-2 bg-green-600 text-green-100 rounded shadow" wire:click="edit">Edit</button>
                         <button onclick="return confirm('Are You Sure?')" class="px-2 bg-red-600 text-green-100 rounded shadow" wire:click="delete({{ $category->id }})">Delete</button>

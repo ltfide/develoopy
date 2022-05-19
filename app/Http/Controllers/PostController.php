@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Programming;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -13,12 +14,12 @@ class PostController extends Controller
     {
         // $data = Post::paginate(8);
         $data = Category::all();
-        return view('index', compact('data'));
+        return view('home.index', compact('data'));
     }
 
     public function post(Post $post) 
     {
-        return view("post", [
+        return view("home.post", [
             "post" => $post,
             "title" => "OK"
         ]);
@@ -26,10 +27,8 @@ class PostController extends Controller
 
     public function paginate_more_content(Request $request)
     {
-        if($request->ajax()){
             $data = Post::latest()->paginate(8);
         
-            return view('ajax-list-view', compact("data"))->with('posts',$data)->render();
-        }
+            return view('home.ajax.ajax-list-view', compact("data"))->with('posts',$data)->render();
     }
 }
